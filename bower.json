@@ -1,0 +1,32 @@
+{
+  "name": "database",
+  "description": "Represents the generic DAO ( Database Access Object )",
+  "main": "index.js",
+  "authors": [
+    "Brent Gordon <brentgordon01@gmail.com>"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "kwantu",
+    "database"
+  ],
+  "homepage": "https://github.com/bgordon01/database",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "moment": "^2.13.0",
+    "es6-promise": "^3.2.2",
+    "pouchdb": "^5.4.5"
+  },
+  "devDependencies": {
+    "chai-as-promised": "^5.3.0",
+    "chai": "^3.5.0",
+    "mocha": "^2.5.3"
+  }
+}

@@ -1,0 +1,33 @@
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <link href="../../bower_components/mocha/mocha.css" rel="stylesheet" />
+    </head>
+    <body>
+        <div id="mocha"></div>
+        <!-- Test framework libraries. -->
+        <script src="../../bower_components/mocha/mocha.js"></script>
+        <script src="../../bower_components/chai/chai.js"></script>
+        <script src="../../bower_components/chai-as-promised/lib/chai-as-promised.js"></script>
+        <!-- Required dependancies / polyfills. -->
+        <script src="../../bower_components/moment/min/moment.min.js"></script>
+        <script src="../../bower_components/es6-promise/es6-promise.min.js"></script>
+        <!-- PouchDB -->
+        <script src="../../bower_components/pouchdb/dist/pouchdb.min.js"></script>
+        <script src="../../bower_components/pouchdb/dist/pouchdb.memory.min.js"></script>
+        <!-- Browserified workflow.min.js file. -->
+        <script src="../../dist/database.js"></script>
+        <!-- Mocha test setup. -->
+        <script>
+            mocha.setup('bdd');
+            var should = chai.should();
+            var expect = chai.expect;
+        </script>
+        <!-- Workflow unit tests. -->
+        <script src="index.test.js"></script>
+        <script>
+            // Execute the mocha tests
+            mocha.run();
+        </script>
+    </body>
+</html>

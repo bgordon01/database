@@ -1,0 +1,11 @@
+os:
+  - linux
+language: node_js
+node_js:
+  - "0.12.14"
+before_script:
+  - npm install -g bower browserify uglifyify mocha-phantomjs
+  - bower install
+  - npm run build-js && npm run build-js-min
+script:
+  - npm test

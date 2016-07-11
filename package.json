@@ -1,0 +1,44 @@
+{
+  "name": "database",
+  "version": "0.1.0",
+  "description": "Represents the generic DAO ( Database Access Object )",
+  "main": "index.js",
+  "scripts": {
+    "build-js": "browserify index.js --standalone Database > dist/database.js -d",
+    "build-js-min": "browserify -g uglifyify index.js --standalone Database > dist/database.min.js -d",
+    "browserify": "npm run build-js && npm run build-js-min",
+    "docs": "jsdoc2md 'index.js' > docs/index.md",
+    "test-client": "mocha-phantomjs test/client/runner.html",
+    "test": "make test && npm run test-client"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bgordon01/database.git"
+  },
+  "keywords": [
+    "kwantu",
+    "database"
+  ],
+  "author": "Brent Gordon <brentgordon01@gmail.com>",
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/bgordon01/database/blob/master/LICENSE"
+    }
+  ],
+  "bugs": {
+    "url": "https://github.com/bgordon01/database/issues"
+  },
+  "homepage": "https://github.com/bgordon01/database#readme",
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "chai-as-promised": "^5.3.0",
+    "mocha": "^2.4.5",
+    "uglifyify": "^3.0.1"
+  },
+  "dependencies": {
+    "es6-promise": "^3.2.1",
+    "moment": "^2.13.0",
+    "q": "^1.4.1"
+  }
+}
