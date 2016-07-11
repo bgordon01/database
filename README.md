@@ -8,11 +8,11 @@
 
 ### How to install the npm module:
 
-`npm install git+https://github.com/kwantu/database.git#0.1.2`
+`npm install git+https://github.com/kwantu/database.git#0.1.0`
 
 ### How to install the bower module:
 
-`bower install https://github.com/kwantu/database.git#0.1.2`
+`bower install https://github.com/kwantu/database.git#0.1.0`
 
 ### How to generate the browser based database module with browserify:
 
