@@ -3,7 +3,7 @@ os:
   - osx
 language: node_js
 node_js:
-  - "6.0.x"
+  - "6.5.0"
 before_script:
   - npm i -g bower webpack mocha-phantomjs typescript
   - npm link typescript
