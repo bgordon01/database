@@ -41,7 +41,7 @@ var config = {
             // All files with a '.ts' or '.tsx' extension will be handled by 'ts-loader'.
             {
                 test: /\.ts?$/,
-                loaders: ['babel', 'ts'],
+                loaders: ['babel-loader', 'ts-loader'],
                 exclude: /(node_modules|bower_components)/
             },
             {
