@@ -1,4 +1,4 @@
-# Database [![Build Status](https://travis-ci.org/kwantu/database.svg?branch=develop)](https://travis-ci.org/kwantu/database)
+# Database [![Build Status](https://travis-ci.org/bgordon01/database.svg?branch=develop)](https://travis-ci.org/bgordon01/database)
 > Represents the generic DAO ( Database Access Object )
 
 ## Getting started
