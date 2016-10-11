@@ -1,13 +1,14 @@
+var wallabyWebpack = require('wallaby-webpack');
+var webpackPostprocessor = wallabyWebpack({});
+
 module.exports = function () {
   return {
     files: [
-      'index.js',
-      'lib/**/*.js'
+      'src/**/*.ts'
     ],
 
     tests: [
-      'test/server/**/*.test.js',
-      'test/**/*.json'
+      'test/server/**/*.js'
     ],
 
     workers: {
@@ -17,6 +18,23 @@ module.exports = function () {
     env: {
       type: 'node'
     },
+
+    preprocessors: {
+      '**/*.js': file => require('babel-core').transform(
+        file.content,
+        {
+          sourceMap: true, 
+          presets: ['es2015']
+        })
+    },
+
+    compilers: {
+      '**/*.ts': w.compilers.typeScript({
+        typescript: require('typescript')
+      })
+    },
+
+    postprocessor: webpackPostprocessor,
 
     testFramework: 'mocha',
 
