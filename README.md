@@ -8,34 +8,25 @@
 
 ### How to install the npm module:
 
-`npm install git+https://github.com/kwantu/database.git#0.1.0`
+`npm install git+https://github.com/bgordon01/database.git`
 
 ### How to install the bower module:
 
-`bower install https://github.com/kwantu/database.git#0.1.0`
+`bower install https://github.com/bgordon01/database.git`
 
-### How to generate the browser based database module with browserify:
+### How to build the compiled versions of the module:
 
-`npm run browserify`
+`npm run build`
 
 ### How to install the repo for development work:
 
 1. Clone the repo
 2. Run `npm install && bower install`
+3. Run `npm run dev` 
 
 ### How to run the unit tests ( server / client ):
 
 `npm test`
-
-### How to generate the API documentation:
-
-This is based on the 'jsdoc-to-markdown' module. See https://github.com/jsdoc2md/jsdoc-to-markdown for more information.
-
-`npm run docs`
-
-## API Documentation
-
-[View the documentation here ...](https://github.com/kwantu/database/blob/master/docs/index.md)
 
 ## Module usage
 
