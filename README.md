@@ -1,5 +1,4 @@
-# Database [![Build Status](https://travis-ci.org/bgordon01/database.svg?branch=develop)](https://travis-ci.org/bgordon01/database) 
-[![Coverage Status](https://coveralls.io/repos/github/bgordon01/database/badge.svg?branch=develop)](https://coveralls.io/github/bgordon01/database?branch=develop)
+# Database [![Build Status](https://travis-ci.org/bgordon01/database.svg?branch=develop)](https://travis-ci.org/bgordon01/database) [![Coverage Status](https://coveralls.io/repos/github/bgordon01/database/badge.svg?branch=develop)](https://coveralls.io/github/bgordon01/database?branch=develop)
 > Represents the generic DAO ( Database Access Object )
 
 ## Getting started
