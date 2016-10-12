@@ -4,7 +4,8 @@
 ## Getting started
 > Install all command line dependancies:  
 
-`npm install -g bower browserify uglifyify mocha-phantomjs jsdoc-to-markdown`
+`npm i -g bower webpack mocha-phantomjs typescript`  
+`npm link typescript`
 
 ### How to install the npm module:
 
