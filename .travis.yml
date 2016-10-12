@@ -1,6 +1,5 @@
 os:
   - linux
-  - osx
 language: node_js
 node_js:
   - "6.5.0"
@@ -11,3 +10,5 @@ before_script:
   - npm run build
 script:
   - npm test
+# Send coverage data to Coveralls
+after_script: "cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js"
