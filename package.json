@@ -1,13 +1,12 @@
 {
   "name": "database",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Represents the generic DAO ( Database Access Object )",
-  "main": "index.js",
+  "main": "dist/database.js",
   "scripts": {
-    "build-js": "browserify index.js --standalone Database > dist/database.js -d",
-    "build-js-min": "browserify -g uglifyify index.js --standalone Database > dist/database.min.js -d",
-    "browserify": "npm run build-js && npm run build-js-min",
-    "docs": "jsdoc2md 'index.js' > docs/index.md",
+    "build": "NODE_ENV=DEV webpack && NODE_ENV=PROD webpack",
+    "dev": "NODE_ENV=DEV webpack --progress --colors --watch",
+    "docs": "jsdoc2md 'src/main.ts' > docs/main.md",
     "test-client": "mocha-phantomjs test/client/runner.html",
     "test": "make test && npm run test-client"
   },
@@ -31,14 +30,36 @@
   },
   "homepage": "https://github.com/bgordon01/database#readme",
   "devDependencies": {
-    "chai": "^3.5.0",
-    "chai-as-promised": "^5.3.0",
-    "mocha": "^2.4.5",
-    "uglifyify": "^3.0.1"
+    "@types/es6-shim": "^0.31.32",
+    "@types/node": "^6.0.45",
+    "@types/pouchdb": "^5.4.28",
+    "awesome-typescript-loader": "^2.2.4",
+    "babel": "6.3.13",
+    "babel-cli": "^6.16.0",
+    "babel-core": "6.1.18",
+    "babel-eslint": "4.1.3",
+    "babel-loader": "6.1.0",
+    "babel-plugin-add-module-exports": "0.1.2",
+    "babel-polyfill": "^6.16.0",
+    "babel-preset-es2015": "6.3.13",
+    "chai": "3.4.1",
+    "chai-as-promised": "^6.0.0",
+    "coveralls": "^2.11.14",
+    "eslint": "1.7.2",
+    "eslint-loader": "1.1.0",
+    "istanbul": "^0.4.5",
+    "mocha": "2.3.4",
+    "mocha-lcov-reporter": "^1.2.0",
+    "source-map-loader": "^0.1.5",
+    "ts-loader": "^0.9.1",
+    "typescript": "^2.0.3",
+    "webpack": "1.12.9"
   },
   "dependencies": {
-    "es6-promise": "^3.2.1",
-    "moment": "^2.13.0",
-    "q": "^1.4.1"
+    "level": "^1.4.0",
+    "memdown": "^1.2.2",
+    "moment": "^2.15.1",
+    "nano": "^6.2.0",
+    "pouchdb": "^6.0.6"
   }
 }

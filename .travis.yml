@@ -2,10 +2,13 @@ os:
   - linux
 language: node_js
 node_js:
-  - "0.12.14"
+  - "6.5.0"
 before_script:
-  - npm install -g bower browserify uglifyify mocha-phantomjs
+  - npm i -g bower webpack mocha-phantomjs typescript
+  - npm link typescript
   - bower install
-  - npm run build-js && npm run build-js-min
+  - npm run build
 script:
   - npm test
+# Send coverage data to Coveralls
+after_script: "cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf coverage"

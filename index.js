@@ -103,58 +103,51 @@ function Database(dbname, options){
 	};
 	// Initialise function, used to create the database
 	this.createDB = function(){
-		//
-		if (global === undefined) {
-			// Determine if this is a native device i.e. is Couchbase Lite installed
-			if (window.cblite){
-				// Set the adapter type
-				this.adapter = 'couchbase';
-				// Get the Couchbase Lite local URL
-				window.cblite.getURL(function(err, url) {
-					if (err) {
-						// Log the error
-						throw 'Couchbase Lite Initilization error - ' + JSON.stringify(err);
-					} else {
-						this.url = url;
-						// Check for android version 4.1 bug
-						try {
-							var xmlHttp = new XMLHttpRequest();
-							xmlHttp.open('GET', this.url, false);
-							xmlHttp.send(null);
-						} catch(err) {
-							throw 'Android version 4.1 error - ' + JSON.stringify(err);
-						}
-						// Create the Couchbase Lite database
-						var options = {
-							url: this.url + '/' + this.dbname,
-							type: 'PUT',
-							data: '',
-							dataType: 'JSON',
-							contentType: 'application/json'
-						};
-						var jqxhr = $.ajax(options);
-						jqxhr.done(function(data, textStatus, jqXHR) {
-							console.log(jqXHR.responseText);
-						}).fail(function(jqXHR, textStatus, errorThrown) {
-							console.log(jqXHR.responseText);
-						});
-					}
-				});
-			} else {
-				// Set the adapter type
-				this.adapter = 'pouchdb';
-				// Create the PouchDB database
-				console.warn('Couchbase Lite plugin not found. Creating the PouchDB database.');
-				if (this.mock === true) {
-					this.db = new PouchDB(this.dbname, { adapter: 'memory' });
+		// Determine if this is a native device i.e. is Couchbase Lite installed
+		if (window.cblite){
+			// Set the adapter type
+			this.adapter = 'couchbase';
+			// Get the Couchbase Lite local URL
+			window.cblite.getURL(function(err, url) {
+				if (err) {
+					// Log the error
+					throw 'Couchbase Lite Initilization error - ' + JSON.stringify(err);
 				} else {
-					this.db = new PouchDB(this.dbname);
+					this.url = url;
+					// Check for android version 4.1 bug
+					try {
+						var xmlHttp = new XMLHttpRequest();
+						xmlHttp.open('GET', this.url, false);
+						xmlHttp.send(null);
+					} catch(err) {
+						throw 'Android version 4.1 error - ' + JSON.stringify(err);
+					}
+					// Create the Couchbase Lite database
+					var options = {
+						url: this.url + '/' + this.dbname,
+						type: 'PUT',
+						data: '',
+						dataType: 'JSON',
+						contentType: 'application/json'
+					};
+					var jqxhr = $.ajax(options);
+					jqxhr.done(function(data, textStatus, jqXHR) {
+						console.log(jqXHR.responseText);
+					}).fail(function(jqXHR, textStatus, errorThrown) {
+						console.log(jqXHR.responseText);
+					});
 				}
-			}
+			});
 		} else {
-			// Server Side
-			this.adapter = 'couchdb';
-			this.db = new PouchDB('http://localhost:5984/' + this.dbname);
+			// Set the adapter type
+			this.adapter = 'pouchdb';
+			// Create the PouchDB database
+			console.warn('Couchbase Lite plugin not found. Creating the PouchDB database.');
+			if (this.mock === true) {
+				this.db = new PouchDB(this.dbname, { adapter: 'memory' });
+			} else {
+				this.db = new PouchDB(this.dbname);
+			}
 		}
 	};
 
