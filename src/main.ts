@@ -1,9 +1,18 @@
+///<reference path="../node_modules/@types/node/index.d.ts"/>
 ///<reference path="../node_modules/@types/pouchdb-core/index.d.ts"/> 
 
 'use strict'
 
-import { Adapters, IOptions, IDocOptions, IMessage } from './interfaces/options';
-import * as PouchDB from 'pouchdb';
+import { Adapters, IOptions, IDocOptions, IMessage } from './interfaces/options'
+// import * as util from './lib/util'
+import * as PouchDB from 'pouchdb'
+
+// Get the environment i.e. client / server
+let env: string = ''
+if (typeof module !== 'undefined' && typeof module.exports !== 'undefined')
+    env = 'server'
+else
+    env = 'client'
 
 export class Database {
     _db: any
@@ -35,10 +44,9 @@ export class Database {
      * @return {class} new Database class object
      *
      */
-    constructor(dbname: string = 'default', adapter: Adapters = 'pouchdb', options?: IOptions) {
+    constructor(dbname: string = 'default', adapter: any = 'pouchdb', options?: IOptions) {
         // Set the database name
         this._dbname = dbname
-        
         // Set the adapter type
         this._adapter = adapter
         // Set the database username
@@ -49,17 +57,23 @@ export class Database {
         this._username = options.username || 'admin'
         // Set the database username
         this._password = options.password || 'password'
-    }
-    /** */
-    create() {
+        // Create the database based on the adapter
         try {
             // Database adapter 'pouchdb'
-            if (this._adapter === 'pouchdb') this._db = new PouchDB(this._dbname)
+            if (adapter === 'pouchdb') 
+                // console.log(this)
+                if (env === 'server') {
+                    let url = 'http://' + this._hostname + ':' + this._port + '/' + this._dbname
+                    this._db = new PouchDB(dbname, { adapter: 'http' })
+                } else 
+                    this._db = new PouchDB(dbname)
             // Database adapter 'couchdb'
-
+            console.log(this)
         } catch (err) {
             throw new Error(err)
         }
+        // Initialise
+        // init(adapter, dbname)
     }
     /** */
     async delete() {
@@ -85,7 +99,17 @@ export class Database {
             throw new Error(err);
         }
     }
-    saveDoc(docId: string, content: any){}
+    async saveDoc(doc: any){
+        try {
+            // Database adapter 'pouchdb'
+            if (this._adapter === 'pouchdb') await this._db.put(doc)
+            else await this._db.put(doc)
+            // Database adapter 'couchdb'
+
+        } catch (err) {
+            throw new Error(err);
+        }
+    }
     removeDoc(docId: string){}
     fetchAttachment(attId: string){}
     saveAttachment(attId: string, content: Blob){}

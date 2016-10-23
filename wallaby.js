@@ -8,6 +8,7 @@ module.exports = function () {
     ],
 
     tests: [
+      'test/client/runner.html',
       'test/server/**/*.js'
     ],
 

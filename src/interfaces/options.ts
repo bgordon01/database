@@ -1,8 +1,13 @@
+///<reference path="../../node_modules/@types/pouchdb-core/index.d.ts"/> 
+
 'use strict'
+
+import * as PouchDB from 'pouchdb'
 
 export type Adapters = 'pouchdb' | 'couchdb' | 'couchbase' | 'mongodb' | 'mysql';
 
 export interface IOptions {
+    db: PouchDB.FruitDOWNAdapter.FruitDOWNAdapterConfiguration,
     hostname: string,
     port: number,
     username: string,

@@ -17,7 +17,7 @@ if (env === 'PROD') {
 
 var config = {
     debug: true,
-    entry: __dirname + '/src/main.ts',
+    entry: ['babel-polyfill', './src/main.ts'],
     // devtool: 'source-map',
     output: {
         path: __dirname + '/dist',
